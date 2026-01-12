@@ -39,3 +39,9 @@ Route::get('/gerar-senha', function () {
     ]);
     return "Usuário criado com sucesso! Agora apague esta rota.";
 });
+
+Route::get('/alunos', App\Http\Livewire\Aluno\GerenciarAlunos::class)->name('alunos.index');
+
+Route::get('/produtos', App\Http\Livewire\Produto\GerenciarProdutos::class)->name('produtos.index');
+
+Route::get('/produtos/{produtoId}/novo-lote', App\Http\Livewire\Produto\EntradaLote::class)->name('lotes.create');

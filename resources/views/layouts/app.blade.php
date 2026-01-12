@@ -19,6 +19,11 @@
                     <a href="#" class="hover:text-orange-500">Estoque</a>
                     <a href="#" class="hover:text-orange-500">Relatórios</a>
                 </nav>
+                <nav class="flex gap-6 text-sm font-medium text-slate-600">
+                    <a href="/caixa" class="hover:text-orange-500">PDV Caixa</a>
+                    <a href="/alunos" class="hover:text-orange-500">Alunos</a> <a href="#" class="hover:text-orange-500">Estoque</a>
+                    <a href="/produtos" class="hover:text-orange-500">Estoque / Produtos</a>
+                </nav>
                 <div class="flex items-center gap-3">
                     <span class="text-sm text-slate-500">Operador: <strong>Paulo</strong></span>
                     <button class="text-xs bg-slate-200 px-3 py-1 rounded hover:bg-red-100 hover:text-red-600 transition">Sair</button>
