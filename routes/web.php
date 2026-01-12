@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController; // <-- Adicione esta linha no topo
+use App\Http\Livewire\CaixaVenda;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/caixa', CaixaVenda::class);
+
+// Rotas abertas
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Rotas Protegidas (Só entra quem estiver logado)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/caixa', CaixaVenda::class);
+    Route::get('/', function () { return redirect('/caixa'); });
 });
 
-use App\Http\Controllers\AlunoController;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-Route::post('/aluno/{id}/credito', [AlunoController::class, 'adicionarCredito']);
-Route::post('/aluno/{id}/restricoes', [AlunoController::class, 'definirRestricoes']);
+Route::get('/gerar-senha', function () {
+    User::create([
+        'name' => 'Paulo',
+        'email' => 'paulo@email.com',
+        'password' => Hash::make('123456'),
+    ]);
+    return "Usuário criado com sucesso! Agora apague esta rota.";
+});

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome'); // <--- Verifique se essa linha existe!
+            $table->decimal('saldo', 10, 2)->default(0);
+            $table->decimal('limite_diario', 10, 2)->default(50.00);
+            $table->json('restricoes')->nullable();
             $table->timestamps();
         });
     }

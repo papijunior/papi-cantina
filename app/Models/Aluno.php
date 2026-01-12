@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     use HasFactory;
+
+    // Tudo que for configuração deve ficar dentro destas chaves
+    protected $fillable = ['nome', 'saldo', 'limite_diario', 'restricoes'];
+
+    protected $casts = [
+        'restricoes' => 'array',
+    ];
 }
-
-protected $fillable = ['nome', 'saldo', 'limite_diario', 'restricoes'];
-
-protected $casts = [
-    'restricoes' => 'array', // Transforma o JSON do banco em array do PHP automaticamente
-];
