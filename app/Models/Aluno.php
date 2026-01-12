@@ -9,3 +9,9 @@ class Aluno extends Model
 {
     use HasFactory;
 }
+
+protected $fillable = ['nome', 'saldo', 'limite_diario', 'restricoes'];
+
+protected $casts = [
+    'restricoes' => 'array', // Transforma o JSON do banco em array do PHP automaticamente
+];

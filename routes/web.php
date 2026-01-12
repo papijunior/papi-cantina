@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\AlunoController;
+
+Route::post('/aluno/{id}/credito', [AlunoController::class, 'adicionarCredito']);
+Route::post('/aluno/{id}/restricoes', [AlunoController::class, 'definirRestricoes']);
